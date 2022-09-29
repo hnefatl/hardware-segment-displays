@@ -6,7 +6,7 @@
 //use panic_halt as _; // breakpoint on `rust_begin_unwind` to catch panics
 use panic_semihosting as _;
 
-use cortex_m::{asm, delay};
+use cortex_m::asm;
 use cortex_m_rt::entry;
 use stm32f3xx_hal::{pac, prelude::*};
 
@@ -21,9 +21,7 @@ fn sleep(seconds: f32) {
 #[entry]
 fn main() -> ! {
     let peripherals = pac::Peripherals::take().unwrap();
-    let core_peripherals = pac::CorePeripherals::take().unwrap();
     let mut reset_and_clock_control = peripherals.RCC.constrain();
-    let mut flash = peripherals.FLASH.constrain();
 
     // For determining which bus (ahb) is needed, section 3.2.2 in
     // https://www.st.com/resource/en/reference_manual/dm00043574-stm32f303xb-c-d-e-stm32f303x6-8-stm32f328x8-stm32f358xc-stm32f398xe-advanced-arm-based-mcus-stmicroelectronics.pdf

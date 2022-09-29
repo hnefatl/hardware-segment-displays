@@ -26,7 +26,7 @@
             "servertype": "openocd",
             "cwd": "${workspaceRoot}",
             "preLaunchTask": "Cargo Build (debug)",
-            "runToEntryPoint": "main",
+            //"runToEntryPoint": "main",
             "executable": "./target/thumbv7em-none-eabihf/debug/ticker",
             "device": "STM32F303VCT6",
             "configFiles": [
